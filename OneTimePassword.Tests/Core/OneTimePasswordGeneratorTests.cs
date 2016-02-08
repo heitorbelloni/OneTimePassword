@@ -1,4 +1,4 @@
-﻿namespace OneTimePassword.Tests {
+﻿namespace OneTimePassword.Tests.Core {
     public class OneTimePasswordGeneratorTests {
     }
 }
