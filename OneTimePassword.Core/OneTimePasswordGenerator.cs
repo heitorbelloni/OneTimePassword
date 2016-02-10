@@ -39,6 +39,7 @@ namespace OneTimePassword.Core {
         }
 
         private string CalculateOneTimePassword(byte[] hash) {
+            //http://tools.ietf.org/html/rfc4226#page-7
             var offset = hash[19] & 0xf;
             var binaryCode = (hash[offset] & 0x7f) << 24
                 | (hash[offset + 1] & 0xff) << 16
