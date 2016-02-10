@@ -34,7 +34,7 @@ namespace OneTimePassword.Core {
         }
 
         private byte[] CalculateMessage() {
-            var timeCounter = (int) (DateTime.UtcNow.Subtract(_epoch).TotalSeconds / _intervalInSeconds);
+            var timeCounter = (int) (SystemTime.UtcNow().Subtract(_epoch).TotalSeconds / _intervalInSeconds);
             return Encoding.UTF8.GetBytes(timeCounter.ToString(CultureInfo.InvariantCulture));
         }
 
