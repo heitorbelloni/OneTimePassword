@@ -3,6 +3,7 @@ using System.Web;
 using Moq;
 using NUnit.Framework;
 using OneTimePassword.Core;
+using OneTimePassword.Resources;
 using OneTimePassword.Web.Controllers;
 
 namespace OneTimePassword.Tests.Web.Controllers {
@@ -22,7 +23,7 @@ namespace OneTimePassword.Tests.Web.Controllers {
         public void Generate_should_throw_http_exception_with_bad_request_status_code_when_user_id_is_null_or_white_space(string userId) {
             var result = Assert.Throws<HttpException>(() => _controller.Generate(userId));
             Assert.AreEqual((int) HttpStatusCode.BadRequest, result.GetHttpCode());
-            Assert.AreEqual("\"User ID\" is required.", result.Message);
+            Assert.AreEqual(Messages.UserIdIsRequired, result.Message);
         }
 
         [Test]
@@ -44,7 +45,7 @@ namespace OneTimePassword.Tests.Web.Controllers {
         public void Validate_should_throw_http_exception_with_bad_request_status_code_when_user_id_is_null_or_white_space(string userId) {
             var result = Assert.Throws<HttpException>(() => _controller.Validate(userId, It.IsAny<string>()));
             Assert.AreEqual((int) HttpStatusCode.BadRequest, result.GetHttpCode());
-            Assert.AreEqual("\"User ID\" is required.", result.Message);
+            Assert.AreEqual(Messages.UserIdIsRequired, result.Message);
         }
 
         [TestCase(null)]
@@ -53,7 +54,7 @@ namespace OneTimePassword.Tests.Web.Controllers {
         public void Validate_should_throw_http_exception_with_bad_request_status_code_when_token_is_null_or_white_space(string token) {
             var result = Assert.Throws<HttpException>(() => _controller.Validate("userId", token));
             Assert.AreEqual((int) HttpStatusCode.BadRequest, result.GetHttpCode());
-            Assert.AreEqual("\"Token\" is required.", result.Message);
+            Assert.AreEqual(Messages.TokenIsRequired, result.Message);
         }
 
         [Test]

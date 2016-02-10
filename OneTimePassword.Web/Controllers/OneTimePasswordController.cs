@@ -3,6 +3,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using OneTimePassword.Core;
+using OneTimePassword.Resources;
 
 namespace OneTimePassword.Web.Controllers {
     public class OneTimePasswordController : Controller {
@@ -14,7 +15,7 @@ namespace OneTimePassword.Web.Controllers {
 
         public JsonResult Generate(string userId) {
             if (String.IsNullOrWhiteSpace(userId)) {
-                throw new HttpException((int) HttpStatusCode.BadRequest, "\"User ID\" is required.");
+                throw new HttpException((int) HttpStatusCode.BadRequest, Messages.UserIdIsRequired);
             }
             var token = _oneTimePasswordGenerator.Generate(userId);
             return Json(token, JsonRequestBehavior.AllowGet);
@@ -22,10 +23,10 @@ namespace OneTimePassword.Web.Controllers {
 
         public JsonResult Validate(string userId, string token) {
             if (String.IsNullOrWhiteSpace(userId)) {
-                throw new HttpException((int) HttpStatusCode.BadRequest, "\"User ID\" is required.");
+                throw new HttpException((int) HttpStatusCode.BadRequest, Messages.UserIdIsRequired);
             }
             if (String.IsNullOrWhiteSpace(token)) {
-                throw new HttpException((int) HttpStatusCode.BadRequest, "\"Token\" is required.");
+                throw new HttpException((int) HttpStatusCode.BadRequest, Messages.TokenIsRequired);
             }
             var checkToken = _oneTimePasswordGenerator.Generate(userId);
             var result = token.Equals(checkToken);
