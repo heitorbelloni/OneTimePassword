@@ -9,12 +9,15 @@
 <body>
     <div>
         <label for="userId">User ID</label>
-        <input type="text" name="userId">
-        <input type="button" value="Generate">
+        <input type="text" name="userId" data-bind="value: userId">
+        <input type="button" value="Generate" data-bind="click: generate">
 
         <label for="token">Token</label>
-        <input type="text" name="token">
-        <input type="button" value="Validate">
+        <input type="text" name="token" data-bind="value: token">
+        <input type="button" value="Validate" data-bind="click: validate">
     </div>
+    <script src="~/Scripts/jquery-2.2.0.min.js"></script>
+    <script src="~/Scripts/knockout-3.4.0.js"></script>
+    <script src="~/Scripts/viewModel.js"></script>
 </body>
 </html>
