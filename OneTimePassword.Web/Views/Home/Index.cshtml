@@ -2,29 +2,45 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>One Time Password</title>
-    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/site.css" rel="stylesheet" />
 </head>
 <body>
-    <div>
-        <label for="userId">User ID</label>
-        <input type="text" name="userId" data-bind="value: userId">
-        <input type="button" value="Generate" data-bind="click: generate">
-
-        <label for="token">Token</label>
-        <input type="text" name="token" data-bind="value: token">
-        <input type="button" value="Validate" data-bind="click: validate">
-
-        <div class="message" data-bind="visible: status() === statusEnum.ERROR">
-            <span data-bind="text: message"></span>
-        </div>
-        <div class="valid" data-bind="visible: status() === statusEnum.VALID">
-            <span>Valid</span>
-        </div>
-        <div class="invalid" data-bind="visible: status() === statusEnum.INVALID">
-            <span>Invalid</span>
-        </div>
+    <div class="container">
+        <form class="form-otp">
+            <div class="form-group">
+                <label for="userId">User ID</label>
+                <input type="text" class="form-control" id="userId" name="userId" data-bind="value: userId">
+                <br />
+                <input type="button" class="btn btn-primary btn-block" value="Generate" data-bind="click: generate">
+            </div>
+            <br />
+            <div class="form-group">
+                <label for="token">Token</label>
+                <input type="text" class="form-control" name="token" data-bind="value: token">
+                <br />
+                <input type="button" class="btn btn-primary btn-block" value="Validate" data-bind="click: validate">
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="alert alert-warning" role="alert" data-bind="visible: status() === statusEnum.ERROR">
+                    <span class="glyphicon glyphicon-exclamation-sign"></span>
+                    <span data-bind="text: message"></span>
+                </div>
+                <div class="alert alert-success" role="alert" data-bind="visible: status() === statusEnum.VALID">
+                    <span class="glyphicon glyphicon-ok-circle"></span>
+                    <span>"Valid."</span>
+                </div>
+                <div class="alert alert-danger" role="alert" data-bind="visible: status() === statusEnum.INVALID">
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                    <span>"Invalid."</span>
+                </div>
+            </div>
+        </form>
     </div>
     <script src="~/Scripts/jquery-2.2.0.min.js"></script>
     <script src="~/Scripts/knockout-3.4.0.js"></script>
