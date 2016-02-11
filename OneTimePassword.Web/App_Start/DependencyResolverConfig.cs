@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Web.Mvc;
 using OneTimePassword.Core;
+using OneTimePassword.Web.Infrastructure;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;

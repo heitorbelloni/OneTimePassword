@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace OneTimePassword.Web {
+namespace OneTimePassword.Web.Infrastructure {
     //https://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=88
     public interface IConstructorSelector {
         ConstructorInfo GetConstructor(Type type);

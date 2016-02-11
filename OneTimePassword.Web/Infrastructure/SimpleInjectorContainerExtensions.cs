@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using SimpleInjector;
 
-namespace OneTimePassword.Web {
+namespace OneTimePassword.Web.Infrastructure {
     //https://www.cuttingedge.it/blogs/steven/pivot/entry.php?id=88
     public static class SimpleInjectorContainerExtensions {
         public static void Register<TService, TImplementation>(this Container container, IConstructorSelector selector) where TService : class {
