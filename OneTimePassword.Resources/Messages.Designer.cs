@@ -61,7 +61,7 @@ namespace OneTimePassword.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;Token&quot; is required..
+        ///   Looks up a localized string similar to Token is required..
         /// </summary>
         public static string TokenIsRequired {
             get {
@@ -70,7 +70,7 @@ namespace OneTimePassword.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;User ID&quot; is required..
+        ///   Looks up a localized string similar to User ID is required..
         /// </summary>
         public static string UserIdIsRequired {
             get {
