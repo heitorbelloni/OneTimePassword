@@ -4,6 +4,7 @@ using System.Web;
 using System.Web.Mvc;
 using OneTimePassword.Core;
 using OneTimePassword.Resources;
+using OneTimePassword.Web.Infrastructure;
 
 namespace OneTimePassword.Web.Controllers {
     public class OneTimePasswordController : Controller {
@@ -13,6 +14,7 @@ namespace OneTimePassword.Web.Controllers {
             _oneTimePasswordGenerator = oneTimePasswordGenerator;
         }
 
+        [JsonHandleError]
         public JsonResult Generate(string userId) {
             if (String.IsNullOrWhiteSpace(userId)) {
                 throw new HttpException((int) HttpStatusCode.BadRequest, Messages.UserIdIsRequired);
@@ -21,6 +23,7 @@ namespace OneTimePassword.Web.Controllers {
             return Json(token, JsonRequestBehavior.AllowGet);
         }
 
+        [JsonHandleError]
         public JsonResult Validate(string userId, string token) {
             if (String.IsNullOrWhiteSpace(userId)) {
                 throw new HttpException((int) HttpStatusCode.BadRequest, Messages.UserIdIsRequired);
