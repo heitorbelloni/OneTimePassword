@@ -33,7 +33,8 @@ my.viewModel = (function () {
         var done = function (result) {
             if (result) {
                 status(statusEnum.VALID);
-            } else {
+            }
+            else {
                 status(statusEnum.INVALID);
             }
         };
