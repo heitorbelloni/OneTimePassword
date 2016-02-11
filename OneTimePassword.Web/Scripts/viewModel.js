@@ -3,9 +3,17 @@
 var my = my || {};
 
 my.viewModel = (function () {
-    var userId = ko.observable();
-    var token = ko.observable();
-    var message = ko.observable();
+    var userId = ko.observable("");
+    var token = ko.observable("");
+    var message = ko.observable("");
+
+    var statusEnum = {
+        NONE: 0,
+        VALID: 1,
+        INVALID: 2,
+        ERROR: 3
+    }
+    var status = ko.observable(statusEnum.NONE);
 
     var generate = function () {
         var url = "/OneTimePassword/Generate";
@@ -23,7 +31,11 @@ my.viewModel = (function () {
             token: token()
         };
         var done = function (result) {
-            //
+            if (result) {
+                status(statusEnum.VALID);
+            } else {
+                status(statusEnum.INVALID);
+            }
         };
         getJson(url, parameters, done);
     };
@@ -36,12 +48,14 @@ my.viewModel = (function () {
             done(result);
         })
         .fail(function (xhr) {
+            status(statusEnum.ERROR);
             var error = xhr.responseText;
             message(error);
         });
     };
 
     var clear = function() {
+        status(statusEnum.NONE);
         message("");
     };
 
@@ -51,6 +65,8 @@ my.viewModel = (function () {
         message: message,
         generate: generate,
         validate: validate,
+        status: status,
+        statusEnum: statusEnum,
     }
 }());
 

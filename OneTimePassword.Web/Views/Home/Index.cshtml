@@ -15,8 +15,16 @@
         <label for="token">Token</label>
         <input type="text" name="token" data-bind="value: token">
         <input type="button" value="Validate" data-bind="click: validate">
-        
-        <span data-bind="text: message"></span>
+
+        <div class="message" data-bind="visible: status() === statusEnum.ERROR">
+            <span data-bind="text: message"></span>
+        </div>
+        <div class="valid" data-bind="visible: status() === statusEnum.VALID">
+            <span>Valid</span>
+        </div>
+        <div class="invalid" data-bind="visible: status() === statusEnum.INVALID">
+            <span>Invalid</span>
+        </div>
     </div>
     <script src="~/Scripts/jquery-2.2.0.min.js"></script>
     <script src="~/Scripts/knockout-3.4.0.js"></script>
