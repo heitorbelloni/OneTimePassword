@@ -9,7 +9,7 @@ http://onetimepassword.apphb.com/
   - ASP.NET MVC 4
 
 ### Known issue:
-The way the algorithm uses the defined time-step interval to calculate the token may lead to a password being generated too close to the transition to the next interval, resulting in it being valid for less time than the expected.
+The way the algorithm uses the defined time-step interval to calculate the token may lead to a password being generated too close to the transition to the next interval, resulting in it being valid for less time than expected.
 
 This is a known issue for the algorithm, and the rfc 6238 (https://tools.ietf.org/html/rfc6238#section-5.2) suggests using a window of 1 step to overcome this.
 
