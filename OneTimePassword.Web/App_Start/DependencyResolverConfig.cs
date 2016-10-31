@@ -23,9 +23,8 @@ namespace OneTimePassword.Web {
         }
 
         private static void RegisterDependencies(Container container) {
+            container.Register<IOneTimePasswordConfiguration, OneTimePasswordConfiguration>();
             container.Register<IOneTimePasswordGenerator, OneTimePasswordGenerator>(SimpleInjectorConstructorSelector.LeastParameters);
         }
-
-
     }
 }
