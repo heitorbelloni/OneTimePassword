@@ -9,14 +9,12 @@ namespace OneTimePassword.Core {
         private readonly DateTime _epoch;
         private readonly int _intervalInSeconds;
         private readonly int _tokenLenght;
-
-        public OneTimePasswordGenerator() : this("5e3dc25b-9a7f-4b28-80a8-973f95ae17b1", DateTime.MinValue, 30, 6) { }
-
-        public OneTimePasswordGenerator(string secretKey, DateTime epoch, int intervalInSeconds, int tokenLenght) {
-            _secretKey = secretKey;
-            _epoch = epoch;
-            _intervalInSeconds = intervalInSeconds;
-            _tokenLenght = tokenLenght;
+        
+        public OneTimePasswordGenerator(IOneTimePasswordConfiguration oneTimePasswordConfiguration) {
+            _secretKey = oneTimePasswordConfiguration.GetSecrectKey();
+            _epoch = oneTimePasswordConfiguration.GetEpoch();
+            _intervalInSeconds = oneTimePasswordConfiguration.GetIntervalInSeconds();
+            _tokenLenght = oneTimePasswordConfiguration.GetTokenLenght();
         }
 
         public string Generate(string userId) {
