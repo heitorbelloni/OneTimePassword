@@ -38,7 +38,7 @@ namespace OneTimePassword.Tests.Core {
         public void Should_generate_same_token_when_within_set_interval() {
             var formerToken = _generator.Generate(_userId);
 
-            SystemTime.UtcNow = () => _utcNow.AddSeconds(_intervalInSeconds);
+            SystemTime.UtcNow = () => _utcNow.AddSeconds(_intervalInSeconds - 1);
             var laterToken = _generator.Generate(_userId);
 
             Assert.AreEqual(formerToken, laterToken);
